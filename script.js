@@ -12,8 +12,8 @@ function getComputerChoice()
     }
 }
 
-let playerSelection = prompt("Rock paper scissors: ");
-let computerSelection = getComputerChoice();
+let playerSelection;
+let computerSelection;
 let cscore = 0;
 let pscore = 0;
 
@@ -61,9 +61,24 @@ function game()
 {
     for(let i = 0; i < 5; i++)
     {
+        playerSelection = prompt("Rock paper scissors: ");
+        computerSelection = getComputerChoice();
+        console.log(`${playerSelection} vs ${computerSelection}`);
         console.log(playRound(computerSelection, playerSelection));
-
+    }
+    
+    if (cscore > pscore)
+    {
+        console.log("The computer wins!");
+    }
+    else if (cscore === pscore)
+    {
+        console.log("Its a draw, same score as the computer.")
+    }
+    else
+    {
+        console.log(`You win! your score is ${pscore}`);
     }
 }
 
-console.log(`${playerSelection} vs ${computerSelection}`);
+game();
