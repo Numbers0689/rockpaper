@@ -5,13 +5,22 @@
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
     </head>
-    <body>
+    <body style="text-align: center;">
         <h1>Rock Paper Scissors</h1>
         <div class="container">
-            <button>ROCK</button>
-            <button>PAPER</button>
-            <button>SCISSORS</button>
+            <button id="rock">ROCK</button>
+            <button id="paper">PAPER</button>
+            <button id="scissors">SCISSORS</button>
         </div>
+        <div style="margin: 15px;">
+            <div id="computerSelect"></div>
+            <div style="font-weight: 900; margin: 5px;">  VS  </div>
+            <div id="playerSelect"></div>
+        </div>
+
+        <div id="score" style="margin: 15px;"></div>
+        <div id="result" style="margin: 15px; font-weight: 700;"></div>
+
         <script src="script.js"></script>
     </body>
 </html>

@@ -21,64 +21,82 @@ function playRound(computerSelection, playerSelection)
 {
     let c = computerSelection.toLowerCase();
     let p = playerSelection.toLowerCase();
-    if (c === p)
-    {
-        return "Its a draw";
-    }
-    else if (c === "rock" && p === "paper")
+
+    if (c === "rock" && p === "paper")
     {
         pscore ++;
-        return "You win! paper beats rock.";
     }
     else if (c === "rock" && p === "scissors")
     {
         cscore ++;
-        return "You lose! rock beats scissors.";
     }
     else if (c === "paper" && p === "scissors")
     {
         pscore ++;
-        return "You win! scissors beats paper.";
     }
     else if (c === "paper" && p === "rock")
     {
         cscore ++;
-        return "You lose! paper beats rock.";
     }
     else if (c === "scissors" && p === "paper")
     {
         cscore ++;
-        return "You lose! scissors beats paper.";
     }
     else if (c === "scissors" && p === "rock")
     {
         pscore ++;
-        return "You win! rock beats scissors.";
     }
 }
 
-function game()
-{
-    for(let i = 0; i < 5; i++)
+function clickFunction() {
+
+    if(cscore < 5 && pscore < 5)
     {
-        playerSelection = prompt("Rock paper scissors: ");
         computerSelection = getComputerChoice();
-        console.log(`${playerSelection} vs ${computerSelection}`);
-        console.log(playRound(computerSelection, playerSelection));
-    }
+
+        playRound(computerSelection, playerSelection);
+
+        player.textContent = playerSelection;
+        comp.textContent = computerSelection;
     
-    if (cscore > pscore)
-    {
-        console.log("The computer wins!");
-    }
-    else if (cscore === pscore)
-    {
-        console.log("Its a draw, same score as the computer.")
-    }
-    else
-    {
-        console.log(`You win! your score is ${pscore}`);
+        score.textContent = `COMPUTER: ${cscore}  YOU: ${pscore}`;
+        if (cscore === 5)
+        {
+            resultDiv.textContent = "The computer wins!";
+        }
+        else if (pscore === 5)
+        {
+            resultDiv.textContent = "You win!";
+        }
     }
 }
 
-game();
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const resultDiv = document.querySelector('#result');
+const comp = document.querySelector('#computerSelect');
+const player = document.querySelector("#playerSelect");
+const score = document.querySelector('#score');
+
+
+rockBtn.addEventListener('click', () => {
+
+    playerSelection = 'Rock';
+    clickFunction();
+});
+
+
+paperBtn.addEventListener('click', () => {
+  
+    playerSelection = 'Paper';
+    clickFunction();
+});
+
+
+scissorsBtn.addEventListener('click', () => {
+  
+    playerSelection = 'Scissors';
+    clickFunction();
+});
+
